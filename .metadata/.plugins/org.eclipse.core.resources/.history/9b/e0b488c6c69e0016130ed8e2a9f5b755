@@ -1,5 +1,0 @@
-package com.manahealth.sv.selenium.ui.tests.framework.steps.app;
-
-public class LoginStep {
-
-}

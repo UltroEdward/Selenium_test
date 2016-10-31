@@ -1,5 +1,0 @@
-package com.manahealth.sv.selenium.ui.tests.framework.driver;
-
-public class DriverFactory {
-
-}
