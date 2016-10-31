@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Demo" parallel="classes" thread-count="1">
+<listeners>
+        <listener class-name="com.manahealth.sv.ui.tests.framework.report.ExtentReporter" />
+    </listeners>
+	<test name="Default tests">
+		<parameter name="BASE_URL" value="" />
+		<parameter name="USERNAME" value="" />
+		<parameter name="PASSWORD" value=""/>
+		<parameter name="DRIVER" value="CHROME"/>
+
+		<classes>
+			<class name="com.manahealth.sv.ui.tests.testcases.tests.app.LoginTest" />
+
+		</classes>
+	</test>
+
+
+</suite>

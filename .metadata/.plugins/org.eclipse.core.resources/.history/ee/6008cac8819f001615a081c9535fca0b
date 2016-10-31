@@ -1,0 +1,7 @@
+package com.manahealth.sv.ui.tests.framework.steps.app;
+
+import com.manahealth.sv.ui.tests.framework.steps.BaseStep;
+
+public class HomePageStep extends BaseStep{
+
+}

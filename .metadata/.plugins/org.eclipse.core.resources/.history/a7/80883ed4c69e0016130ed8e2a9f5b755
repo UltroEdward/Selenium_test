@@ -1,0 +1,21 @@
+package com.manahealth.sv.selenium.ui.tests.testcases.tests;
+
+import org.testng.annotations.Test;
+
+import com.manahealth.sv.selenium.ui.tests.testcases.tests.BaseTest;
+
+public class LoginTest extends BaseTest{
+
+	
+	@Test
+	public void loginWrongCreds(){
+		
+	}
+	
+	@Test
+	public void loginPositive(){
+		
+	}
+	
+
+}

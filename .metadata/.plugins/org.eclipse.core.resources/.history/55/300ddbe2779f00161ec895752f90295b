@@ -1,0 +1,5 @@
+package com.manahealth.sv.ui.tests.framework.utils;
+
+public class Config {
+
+}

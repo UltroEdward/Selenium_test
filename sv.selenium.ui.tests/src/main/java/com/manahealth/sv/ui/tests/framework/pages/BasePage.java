@@ -12,7 +12,7 @@ public class BasePage {
 
 	private WebDriver driver = null;
 	private static final Logger log = LoggerFactory.getLogger(BasePage.class);
-	private static final int DEFAULT_WAIT_TIME = 30;
+	private static final int DEFAULT_WAIT_TIME = 99;
 
 	public BasePage(WebDriver driver) {
 		this.driver = driver;
@@ -22,9 +22,10 @@ public class BasePage {
 		WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathExpression)));
+			log.info(String.format("Page [%s] is loaded", this.getClass().getSimpleName()));
 		} catch (WebDriverException ex) {
-			log.error(
-					String.format("Page is not loaded correctly: {}, error is: {}", xpathExpression, ex.getMessage()));
+			log.error(String.format("Page [%s] is NOT loaded correctly, can't find indicator: (%s). \nERROR: %s", this.getClass().getSimpleName(), xpathExpression, ex.getMessage()));
+			throw new RuntimeException(ex);
 		}
 	}
 

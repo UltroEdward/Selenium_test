@@ -1,0 +1,15 @@
+package com.manahealth.sv.ui.tests.framework.driver;
+
+import com.manahealth.sv.ui.tests.framework.utils.Config;
+
+public class Context {
+	
+	private static String baseUrl = null;
+	private static String username = null;
+	private static String password = null;
+	
+
+	
+	
+	
+}

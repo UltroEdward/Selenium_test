@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Demo" duration-ms="28850" started-at="2016-10-31T18:31:03Z" finished-at="2016-10-31T18:31:32Z">
+    <groups>
+    </groups>
+    <test name="Default tests" duration-ms="28850" started-at="2016-10-31T18:31:03Z" finished-at="2016-10-31T18:31:32Z">
+      <class name="com.manahealth.sv.ui.tests.testcases.tests.app.LoginTest">
+        <test-method status="PASS" signature="setUpContext(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.manahealth.sv.ui.tests.testcases.tests.app.LoginTest@45f45fa1]" name="setUpContext" is-config="true" duration-ms="6" started-at="2016-10-31T21:31:03Z" finished-at="2016-10-31T21:31:03Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[http://10.1.10.103:9001]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[stubrequester@manahealth.com]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[dummyPassword]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[CHROME]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpContext -->
+        <test-method status="PASS" signature="startUp()[pri:0, instance:com.manahealth.sv.ui.tests.testcases.tests.app.LoginTest@45f45fa1]" name="startUp" is-config="true" duration-ms="7045" started-at="2016-10-31T21:31:03Z" finished-at="2016-10-31T21:31:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startUp -->
+        <test-method status="PASS" signature="loginPositive(java.lang.String, java.lang.String)[pri:0, instance:com.manahealth.sv.ui.tests.testcases.tests.app.LoginTest@45f45fa1]" name="loginPositive" duration-ms="897" started-at="2016-10-31T21:31:10Z" description="User can be authorized, and see dashboard after authorization" data-provider="credentials" finished-at="2016-10-31T21:31:11Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[stubrequester@manahealth.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[dummyPassword]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginPositive -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.manahealth.sv.ui.tests.testcases.tests.app.LoginTest@45f45fa1]" name="tearDown" is-config="true" duration-ms="673" started-at="2016-10-31T21:31:11Z" finished-at="2016-10-31T21:31:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="startUp()[pri:0, instance:com.manahealth.sv.ui.tests.testcases.tests.app.LoginTest@45f45fa1]" name="startUp" is-config="true" duration-ms="6542" started-at="2016-10-31T21:31:12Z" finished-at="2016-10-31T21:31:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startUp -->
+        <test-method status="PASS" signature="loginWrongCreds(java.lang.String, java.lang.String)[pri:0, instance:com.manahealth.sv.ui.tests.testcases.tests.app.LoginTest@45f45fa1]" name="loginWrongCreds" duration-ms="476" started-at="2016-10-31T21:31:19Z" description="User can&#039;t be authorized with wrong credentials" data-provider="wrongCredentials" finished-at="2016-10-31T21:31:19Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[qwerty@qwerty.ru]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[qwerty]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginWrongCreds -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.manahealth.sv.ui.tests.testcases.tests.app.LoginTest@45f45fa1]" name="tearDown" is-config="true" duration-ms="635" started-at="2016-10-31T21:31:19Z" finished-at="2016-10-31T21:31:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="startUp()[pri:0, instance:com.manahealth.sv.ui.tests.testcases.tests.app.LoginTest@45f45fa1]" name="startUp" is-config="true" duration-ms="11490" started-at="2016-10-31T21:31:20Z" finished-at="2016-10-31T21:31:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startUp -->
+        <test-method status="PASS" signature="loginWrongCreds(java.lang.String, java.lang.String)[pri:0, instance:com.manahealth.sv.ui.tests.testcases.tests.app.LoginTest@45f45fa1]" name="loginWrongCreds" duration-ms="432" started-at="2016-10-31T21:31:31Z" description="User can&#039;t be authorized with wrong credentials" data-provider="wrongCredentials" finished-at="2016-10-31T21:31:32Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[123456@123456.ru]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[qwerty]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginWrongCreds -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.manahealth.sv.ui.tests.testcases.tests.app.LoginTest@45f45fa1]" name="tearDown" is-config="true" duration-ms="641" started-at="2016-10-31T21:31:32Z" finished-at="2016-10-31T21:31:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.manahealth.sv.ui.tests.testcases.tests.app.LoginTest -->
+    </test> <!-- Default tests -->
+  </suite> <!-- Demo -->
+</testng-results>

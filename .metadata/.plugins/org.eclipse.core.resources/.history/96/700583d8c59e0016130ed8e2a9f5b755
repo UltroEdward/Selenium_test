@@ -1,0 +1,9 @@
+package com.manahealth.sv.selenium.ui.tests.framework.pages.app;
+
+public class LoginPage {
+
+	@FindBy(css = "input[type=\"submit\"]")
+	@CacheLookup
+	private WebElement searchButton;
+
+}

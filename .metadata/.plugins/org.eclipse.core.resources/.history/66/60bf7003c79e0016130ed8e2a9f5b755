@@ -1,0 +1,7 @@
+package com.manahealth.sv.selenium.ui.tests.framework.pages.app;
+
+import com.manahealth.sv.selenium.ui.tests.framework.pages.BasePage;
+
+public class HomePage extends BasePage{
+
+}

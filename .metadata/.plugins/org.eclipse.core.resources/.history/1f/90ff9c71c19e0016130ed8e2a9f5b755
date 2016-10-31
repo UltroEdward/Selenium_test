@@ -1,0 +1,22 @@
+package com.manahealth.sv.selenium.ui.tests.framework.driver;
+
+import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class DriverFactory {
+
+	Logger LOG = LoggerFactory.getLogger(DriverFactory.class)
+	
+	private DriverFactory() {
+	}
+
+	public static WebDriver getWebDriver() {
+		return getWebDriver(DriverType.CHROME);
+	}
+
+	public static WebDriver getWebDriver(DriverType driverType) {
+		return null;
+	}
+
+}

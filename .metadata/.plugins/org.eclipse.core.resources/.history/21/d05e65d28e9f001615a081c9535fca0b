@@ -1,0 +1,16 @@
+package com.manahealth.sv.ui.tests.framework.driver;
+
+import org.openqa.selenium.WebDriver;
+
+public class LocalDriverManager {
+
+	private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+
+	public static WebDriver getDriver() {
+		return driver.get();
+	}
+
+	static void setWebDriver(WebDriver driver) {
+		driver.set(driver);
+	}
+}

@@ -1,0 +1,13 @@
+package com.manahealth.sv.selenium.ui.tests.framework.steps;
+
+import org.openqa.selenium.WebDriver;
+
+public class BaseStep {
+
+	private WebDriver driver = null;
+	
+	public WebDriver BaseStep(WebDriver driver){
+		this.driver= driver;
+	}
+	
+}

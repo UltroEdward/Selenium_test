@@ -1,0 +1,24 @@
+package com.manahealth.sv.selenium.ui.tests.framework.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class BasePage {
+
+	private WebDriver driver = null;
+	private static final int DEFAULT_WAIT_TIME = 30;
+
+	public BasePage(WebDriver driver) {
+		this.driver = driver;
+	}
+	
+	public BasePage(WebDriver driver, String xPathToWait) {
+		this.driver = driver;
+		waitForPageToLoad(xPathToWait);
+	}
+	
+	private void waitForPageToLoad(String xpathToWait){
+		WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);	
+	}
+
+}

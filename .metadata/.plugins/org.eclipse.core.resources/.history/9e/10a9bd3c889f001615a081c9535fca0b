@@ -1,0 +1,21 @@
+package com.manahealth.sv.ui.tests.framework.driver;
+
+import com.manahealth.sv.ui.tests.framework.utils.Config;
+
+public class Context {
+	
+	private static Context context;
+	
+	public static synchronized Context getInstance() {
+		if (context == null) {
+			context = new Context();
+		}
+		return context;
+	}
+
+	private String baseUrl;
+	private String driver;
+	private String username;
+	private String password;
+
+}

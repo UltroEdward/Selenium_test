@@ -1,0 +1,35 @@
+package com.manahealth.sv.ui.tests.framework.driver;
+
+import com.manahealth.sv.ui.tests.framework.utils.Config;
+
+public class Context {
+	
+	private static String BASE_URL = null;
+	private static String USERNAME = null;
+	private static String PASSWORD = null;
+	
+	public static String getBASE_URL() {
+		if (BASE_URL == null){
+			BASE_URL = Config.getValue("BASE_URL");
+		}
+		return BASE_URL;
+	}
+	public static void setBASE_URL(String bASE_URL) {
+		BASE_URL = bASE_URL;
+	}
+	public static String getUSERNAME() {
+		return USERNAME;
+	}
+	public static void setUSERNAME(String uSERNAME) {
+		USERNAME = uSERNAME;
+	}
+	public static String getPASSWORD() {
+		return PASSWORD;
+	}
+	public static void setPASSWORD(String pASSWORD) {
+		PASSWORD = pASSWORD;
+	}
+	
+	
+	
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test suite" parallel="classes" thread-count="10">
+  <test name="Default tests" verbose="1" annotations="JDK" thread-count="10" parallel="classes">
+    <parameter name="BASE_URL" value="http://10.1.10.103:9001"/>
+    <parameter name="USERNAME" value="stubrequester@manahealth.com"/>
+    <parameter name="PASSWORD" value="jdbc:mysql://localhost:3306/db"/>
+    
+    <groups>
+      <run>
+        <exclude name="integration"/>
+      </run>
+    </groups>
+
+    <packages>
+      <package name="com.example.*"/>
+    </packages>
+  </test>
+
+  <test name="Integration tests" annotations="JDK">
+    <groups>
+      <run>
+        <include name="integration"/>
+      </run>
+    </groups>
+
+    <packages>
+      <package name="com.example.*"/>
+    </packages>
+  </test>
+</suite>

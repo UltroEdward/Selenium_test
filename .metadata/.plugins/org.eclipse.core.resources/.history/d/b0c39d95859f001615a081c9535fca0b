@@ -1,0 +1,3 @@
+BASE_URL = http://10.1.10.103:9001
+LOGIN = stubrequester@manahealth.com
+PASSWORD = dummyPassword

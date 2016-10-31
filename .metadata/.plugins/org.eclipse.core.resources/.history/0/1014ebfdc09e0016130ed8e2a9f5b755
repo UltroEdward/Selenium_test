@@ -1,0 +1,22 @@
+package com.manahealth.sv.selenium.ui.tests.framework.driver;
+
+import org.openqa.selenium.WebDriver;
+
+public class DriverFactory {
+
+	private DriverFactory() {
+	}
+
+	public static WebDriver getWebDriver() {
+
+		return driver;
+
+	}
+	
+	public static WebDriver getWebDriver(DriverType driverType) {
+
+		return driver;
+
+	}
+	
+}

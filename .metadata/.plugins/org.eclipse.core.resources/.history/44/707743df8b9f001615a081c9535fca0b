@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test suite" parallel="classes" thread-count="1">
+	<test name="Default tests" verbose="1" annotations="JDK" thread-count="1" parallel="classes">
+		<parameter name="BASE_URL" value="" />
+		<parameter name="USERNAME" value="" />
+		<parameter name="PASSWORD" value=""/>
+		<parameter name="DRIVER" value="CHROME"/>
+
+		<classes>
+			<class name="com.manahealth.sv.ui.tests.testcases.tests.app.LoginTest" />
+
+		</classes>
+	</test>
+
+
+</suite>

@@ -1,0 +1,5 @@
+package com.manahealth.sv.selenium.ui.tests.framework.driver;
+
+public enum DriverType {
+	FIREFOX, CHROME
+}
