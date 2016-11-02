@@ -8,12 +8,15 @@ import org.openqa.selenium.support.PageFactory;
 import com.manahealth.sv.ui.tests.framework.pages.app.LoginPage;
 import com.manahealth.sv.ui.tests.framework.steps.BaseStep;
 
+import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
+import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
+
 public class LoginStep extends BaseStep {
 
-	public LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
-
+	public LoginPage loginPage = new LoginPage(driver);
+	 
 	public LoginStep(WebDriver driver) {
-		super(driver);
+		super(driver);	
 	}
  
 	public HomeStep login(String username, String password) {
@@ -25,7 +28,7 @@ public class LoginStep extends BaseStep {
 		loginDefault(username, password);
 		String alertMsg = loginPage.errorAlertLbl.getText();
 		assertThat(alertMsg.contains("The email address or password you typed in is incorrect"));
-		return alertMsg;
+		return null;
 	}
 	
 	private void loginDefault(String username, String password) {

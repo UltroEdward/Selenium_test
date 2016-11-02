@@ -2,22 +2,22 @@ package com.manahealth.sv.ui.tests.framework.driver;
 
 import com.manahealth.sv.ui.tests.framework.utils.Config;
 
-public class Context {
+public class AppContext {
 
-	private static Context context;
-	
-	private Context(){
-		
+	private static AppContext appContext;
+
+	private AppContext() {
 	}
 
-	public static synchronized Context getInstance() {
-		if (context == null) {
-			context = new Context();
+	public static synchronized AppContext getInstance() {
+		if (appContext == null) {
+			appContext = new AppContext();
 		}
-		return context;
+		return appContext;
 	}
 
 	private String baseUrl = null;
+	private String reportPath = null;
 	private DriverType driver = null;
 	private String username = null;
 	private String password = null;
@@ -31,6 +31,14 @@ public class Context {
 
 	public void setBaseUrl(String baseUrl) {
 		this.baseUrl = baseUrl;
+	}
+
+	public String getReportPath() {
+		return reportPath;
+	}
+
+	public void setReportPath(String reportPath) {
+		this.reportPath = reportPath;
 	}
 
 	public DriverType getDriver() {

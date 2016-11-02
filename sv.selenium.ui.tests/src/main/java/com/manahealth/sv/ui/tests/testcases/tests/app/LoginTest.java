@@ -10,12 +10,12 @@ public class LoginTest extends BaseTest {
 
 	@DataProvider
 	public String[][] wrongCredentials() {
-		return new String[][] { { "qwerty@qwerty.ru", "qwerty" }, { "123456@123456.ru", "qwerty" } };
+		return new String[][] { { "qwerty@qwerty.ru", "qwerty" } };
 	}
 
 	@DataProvider
 	public String[][] credentials() {
-		return new String[][] { { context.getUsername(), context.getPassword() }};
+		return new String[][] { { appContext.getUsername(), appContext.getPassword() } };
 	}
 
 	@Test(dataProvider = "wrongCredentials", description = "User can't be authorized with wrong credentials")

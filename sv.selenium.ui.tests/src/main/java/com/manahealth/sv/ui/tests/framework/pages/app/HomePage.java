@@ -1,8 +1,11 @@
 package com.manahealth.sv.ui.tests.framework.pages.app;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
 import com.manahealth.sv.ui.tests.framework.pages.BasePage;
+
+import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
 
 public class HomePage extends BasePage{
 
@@ -11,6 +14,7 @@ public class HomePage extends BasePage{
 	public HomePage(WebDriver driver) {
 		super(driver);
 		waitForPageToLoad(LOAD_INDICATOR);
+		PageFactory.initElements(new HtmlElementDecorator(driver), this);
 	}
 
 }
