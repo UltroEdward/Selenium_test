@@ -4,11 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.manahealth.sv.ui.tests.framework.elements.IButton;
+import com.manahealth.sv.ui.tests.framework.elements.IInput;
+import com.manahealth.sv.ui.tests.framework.elements.ILabel;
 import com.manahealth.sv.ui.tests.framework.pages.BasePage;
 
-import ru.yandex.qatools.htmlelements.element.Button;
-import ru.yandex.qatools.htmlelements.element.Link;
-import ru.yandex.qatools.htmlelements.element.TextInput;
 import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
 
 public class LoginPage extends BasePage {
@@ -16,13 +16,13 @@ public class LoginPage extends BasePage {
 	private static final String LOAD_INDICATOR = "//input[@name='username']";
 	
 	@FindBy(xpath = "//input[@name='username']")
-	public TextInput userNameInp;
+	public IInput userNameInp;
 	@FindBy(xpath = "//input[@name='password']")
-	public TextInput passwordInp;
+	public IInput passwordInp;
 	@FindBy(xpath = "//*[@type='submit']")
-	public Button submitBtn;
+	public IButton submitBtn;
 	@FindBy(xpath = "//div[contains(@class, 'errorMessage')]")
-	public Link errorAlertLbl;
+	public ILabel errorAlertLbl;
 
 	public LoginPage(WebDriver driver) {
 		super(driver);

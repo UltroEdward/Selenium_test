@@ -3,13 +3,9 @@ package com.manahealth.sv.ui.tests.framework.steps.app;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 import com.manahealth.sv.ui.tests.framework.pages.app.LoginPage;
 import com.manahealth.sv.ui.tests.framework.steps.BaseStep;
-
-import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
-import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
 
 public class LoginStep extends BaseStep {
 

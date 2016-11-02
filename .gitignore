@@ -17,6 +17,7 @@ test-output
 .metadata
 bin/
 tmp/
+*.xml
 *.tmp
 *.bak
 *.swp

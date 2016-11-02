@@ -10,7 +10,7 @@ public class LoginTest extends BaseTest {
 
 	@DataProvider
 	public String[][] wrongCredentials() {
-		return new String[][] { { "qwerty@qwerty.ru", "qwerty" } };
+		return new String[][] { { "qwerty@qwerty.ru", "q w e r ty" } };
 	}
 
 	@DataProvider
