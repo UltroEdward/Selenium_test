@@ -4,9 +4,9 @@
         <listener class-name="com.manahealth.sv.ui.tests.framework.report.ReportListener" />
     </listeners>
 	<test name="Default tests">
-		<parameter name="BASE_URL" value="" />
-		<parameter name="USERNAME" value="" />
-		<parameter name="PASSWORD" value=""/>
+		<parameter name="BASE_URL" value="http://10.1.10.103:9001" />
+		<parameter name="USERNAME" value="stubrequester@manahealth.com" />
+		<parameter name="PASSWORD" value="dummyPassword"/>
 		<parameter name="REPORT_PATH" value="D:\"/>
 		<parameter name="DRIVER" value="CHROME"/>
 

@@ -26,11 +26,11 @@ public class BasePage {
 		WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathExpression)));
-			String infMsg = String.format("Page [%s] is loaded", this.getClass().getSimpleName());
+			String infMsg = String.format("Page <ins><b>[%s]</b></ins>  is loaded", this.getClass().getSimpleName());
 			log.info(infMsg);
 			reporter.reportStep(LogStatus.INFO, infMsg);
 		} catch (WebDriverException ex) {
-			String errMsg = String.format("Page [%s] is NOT loaded correctly, can't find indicator: (%s). \nERROR: %s", this.getClass().getSimpleName(), xpathExpression, ex.getMessage());
+			String errMsg = String.format("Page <ins><b>[%s]</b></ins> is NOT loaded correctly, can't find indicator: (%s). \nERROR: %s", this.getClass().getSimpleName(), xpathExpression, ex.getMessage());
 			log.error(errMsg);
 			reporter.reportStep(LogStatus.ERROR, errMsg);
 			throw new RuntimeException(ex);
