@@ -2,13 +2,14 @@ package com.manahealth.sv.ui.tests.framework.steps.app;
 
 import org.openqa.selenium.WebDriver;
 
-import com.manahealth.sv.ui.tests.framework.assertions.IAssert;
+import com.manahealth.sv.ui.tests.framework.driver.AppContext;
 import com.manahealth.sv.ui.tests.framework.pages.app.LoginPage;
 import com.manahealth.sv.ui.tests.framework.steps.BaseStep;
 
 public class LoginStep extends BaseStep {
 
 	public LoginPage loginPage = new LoginPage(driver);
+	AppContext context = AppContext.getInstance();
 	 
 	public LoginStep(WebDriver driver) {
 		super(driver);	
@@ -22,8 +23,16 @@ public class LoginStep extends BaseStep {
 	public String loginNegative(String username, String password) {
 		loginDefault(username, password);
 		String alertMsg = loginPage.errorAlertLbl.getText();
-		IAssert.assertTrue(alertMsg.contains("The email address or password you typed in is incorrect"));
-		return null;
+		return alertMsg;
+	}
+	
+	//2 methods, just as sugar for tests
+	public HomeStep loginAsProv() {
+		return login(context.getUsernameProv(), context.getPasswordProv() );
+	}
+	
+	public HomeStep loginAsReq() {
+		return login(context.getUsernameReq(), context.getPasswordReq() );
 	}
 	
 	private void loginDefault(String username, String password) {

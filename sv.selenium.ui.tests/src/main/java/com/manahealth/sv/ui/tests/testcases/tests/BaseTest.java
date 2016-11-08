@@ -2,7 +2,6 @@ package com.manahealth.sv.ui.tests.testcases.tests;
 
 import java.lang.reflect.Method;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -19,32 +18,35 @@ import com.manahealth.sv.ui.tests.framework.report.ReportManager;
 
 public abstract class BaseTest {
 
-	protected WebDriver driver = null;
 	protected AppContext appContext = null;
 	private ReportManager reporter = ReportManager.getInstance();
 
 	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
-		DriverFactory.quitWebDriver(driver);
+		DriverFactory.quitWebDriver(DriverFactory.getDriver());
 	}
 
 	@BeforeMethod(alwaysRun = true)
 	public void beforeMethod(Method m, ITestContext context) {
-		driver = DriverFactory.getWebDriver(appContext.getDriver());
-		driver.get(appContext.getBaseUrl());
+		DriverFactory.setDriver(appContext.getDriver());
+		DriverFactory.getDriver().get(appContext.getBaseUrl());
 		reporter.startTest(m.getName(), m.getAnnotation(Test.class).description());
 	}
 
-	@Parameters({ "BASE_URL", "REPORT_PATH", "USERNAME", "PASSWORD", "DRIVER" })
+	@Parameters({ "BASE_URL", "REPORT_PATH", "USERNAME_PROV", "PASSWORD_PROV", "USERNAME_REQ", "PASSWORD_REQ", "DRIVER" })
 	@BeforeClass
-	public void setUpContext(@Optional String baseUrl, @Optional String reportPath, @Optional String username,
-			@Optional String password, @Optional String driver) {
+	public void setUpContext(@Optional String baseUrl, @Optional String reportPath, @Optional String usernameProv,
+			@Optional String passwordProv, @Optional String usernameReq, @Optional String passwordReq,
+			@Optional String driver) {
 		appContext = AppContext.getInstance();
+		
 		appContext.setBaseUrl(baseUrl);
 		appContext.setReportPath(reportPath);
 		appContext.setDriver(DriverType.valueOf(driver));
-		appContext.setUsername(username);
-		appContext.setPassword(password);
+		appContext.setUsernameProv(usernameProv);
+		appContext.setPasswordProv(passwordProv);
+		appContext.setUsernameReq(usernameReq);
+		appContext.setPasswordReq(passwordReq);
 		
 		reporter.init();
 	}
@@ -53,5 +55,5 @@ public abstract class BaseTest {
 	public void afterSuite() {
 		reporter.endReport();
 	}
-	
+
 }

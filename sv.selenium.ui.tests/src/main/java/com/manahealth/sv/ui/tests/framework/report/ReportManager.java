@@ -1,12 +1,11 @@
 package com.manahealth.sv.ui.tests.framework.report;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.manahealth.sv.ui.tests.framework.driver.AppContext;
+import com.manahealth.sv.ui.tests.framework.utils.DateUtils;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -30,7 +29,7 @@ public class ReportManager {
 	public void init() {
 		if (report == null) {
 			report = new ExtentReports(AppContext.getInstance().getReportPath() + File.separator
-					+ String.format("Report_%s.html", getCurDate()));
+					+ String.format("Report_%s.html", DateUtils.getCurDate()));
 		}
 	}
 
@@ -57,11 +56,6 @@ public class ReportManager {
 	}
 
 
-	private static String getCurDate() {
-		Calendar cal = Calendar.getInstance();
-		SimpleDateFormat format = new SimpleDateFormat();
-		format.applyPattern("dd-MM-yyyy_HH-mm-ss");
-		return format.format(cal.getTime());
-	}
+	
 
 }

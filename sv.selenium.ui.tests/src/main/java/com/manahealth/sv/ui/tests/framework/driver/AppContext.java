@@ -19,8 +19,10 @@ public class AppContext {
 	private String baseUrl = null;
 	private String reportPath = null;
 	private DriverType driver = null;
-	private String username = null;
-	private String password = null;
+	private String usernameProv = null;
+	private String passwordProv = null;
+	private String usernameReq = null;
+	private String passwordReq = null;
 
 	public String getBaseUrl() {
 		if (baseUrl == null) {
@@ -52,26 +54,37 @@ public class AppContext {
 		this.driver = driver;
 	}
 
-	public String getUsername() {
-		if (username == null) {
-			username = Config.getValue("USERNAME");
-		}
-		return username;
+	public String getUsernameProv() {
+		return usernameProv;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsernameProv(String usernameProv) {
+		this.usernameProv = usernameProv;
 	}
 
-	public String getPassword() {
-		if (password == null) {
-			password = Config.getValue("PASSWORD");
-		}
-		return password;
+	public String getPasswordProv() {
+		return passwordProv;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPasswordProv(String passwordProv) {
+		this.passwordProv = passwordProv;
 	}
 
+	public String getUsernameReq() {
+		return usernameReq;
+	}
+
+	public void setUsernameReq(String usernameReq) {
+		this.usernameReq = usernameReq;
+	}
+
+	public String getPasswordReq() {
+		return passwordReq;
+	}
+
+	public void setPasswordReq(String passwordReq) {
+		this.passwordReq = passwordReq;
+	}
+
+	
 }

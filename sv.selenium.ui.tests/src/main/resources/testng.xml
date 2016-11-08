@@ -1,13 +1,15 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Demo" parallel="classes" thread-count="1">
+<suite name="Demo" parallel="methods" thread-count="1">
 <listeners>
         <listener class-name="com.manahealth.sv.ui.tests.framework.report.ReportListener" />
     </listeners>
 	<test name="Default tests">
 		<parameter name="BASE_URL" value="http://10.1.10.103:9001" />
-		<parameter name="USERNAME" value="stubrequester@manahealth.com" />
-		<parameter name="PASSWORD" value="dummyPassword"/>
-		<parameter name="REPORT_PATH" value="D:\"/>
+		<parameter name="USERNAME_REQ" value="stubrequester@manahealth.com" />
+		<parameter name="PASSWORD_REQ" value="dummyPassword"/>
+		<parameter name="USERNAME_PROV" value="stubprovider@manahealth.com" />
+		<parameter name="PASSWORD_PROV" value="dummyPassword2"/>
+		<parameter name="REPORT_PATH" value="D:\Report\"/>
 		<parameter name="DRIVER" value="CHROME"/>
 
 		<classes>
