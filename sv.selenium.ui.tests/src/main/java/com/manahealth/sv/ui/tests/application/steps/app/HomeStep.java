@@ -14,6 +14,4 @@ public class HomeStep extends BaseStep{
 		super(driver);
 	}
 	
-	
-
 }

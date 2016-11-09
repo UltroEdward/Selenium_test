@@ -14,7 +14,6 @@ import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
 
 public class SearchPage extends BasePage {
 
-
 	private static final String LOAD_INDICATOR = "//h1[contains(@class, 'Search')][contains(@class, 'header')]";
 
 	@FindBy(xpath = "//input[@name='firstName']")

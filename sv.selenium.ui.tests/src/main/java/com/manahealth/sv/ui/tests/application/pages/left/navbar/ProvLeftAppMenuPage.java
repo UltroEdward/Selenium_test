@@ -11,4 +11,5 @@ public class ProvLeftAppMenuPage extends AbstarctLeftAppMenuPage {
 		super(driver);
 		PageFactory.initElements(new HtmlElementDecorator(driver), this);
 	}
+	
 }
