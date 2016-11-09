@@ -1,4 +1,4 @@
-package com.manahealth.sv.ui.tests.framework.pages.app;
+package com.manahealth.sv.ui.tests.application.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;

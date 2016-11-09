@@ -1,15 +1,13 @@
-package com.manahealth.sv.ui.tests.framework.steps.app;
+package com.manahealth.sv.ui.tests.application.steps.app;
 
 import org.openqa.selenium.WebDriver;
 
-import com.manahealth.sv.ui.tests.framework.driver.AppContext;
-import com.manahealth.sv.ui.tests.framework.pages.app.LoginPage;
+import com.manahealth.sv.ui.tests.application.pages.LoginPage;
 import com.manahealth.sv.ui.tests.framework.steps.BaseStep;
 
 public class LoginStep extends BaseStep {
 
 	public LoginPage loginPage = new LoginPage(driver);
-	AppContext context = AppContext.getInstance();
 	 
 	public LoginStep(WebDriver driver) {
 		super(driver);	
@@ -26,7 +24,6 @@ public class LoginStep extends BaseStep {
 		return alertMsg;
 	}
 	
-	//2 methods, just as sugar for tests
 	public HomeStep loginAsProv() {
 		return login(context.getUsernameProv(), context.getPasswordProv() );
 	}

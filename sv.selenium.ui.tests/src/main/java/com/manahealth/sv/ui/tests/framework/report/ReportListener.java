@@ -12,17 +12,17 @@ public class ReportListener implements IResultListener, IInvokedMethodListener {
 	private ReportManager reporter = ReportManager.getInstance();
 
 	public void onTestSkipped(ITestResult tr) {
-		reporter.reportStep(LogStatus.SKIP, "Skipped test case [" + Thread.currentThread().getName() + "] : "+ tr.getName() + " " + tr.getThrowable().getMessage());
+		reporter.reportStep(LogStatus.SKIP, "Skipped test [" + Thread.currentThread().getName() + "] : "+ tr.getName() + " " + tr.getThrowable().getMessage());
 		reporter.endTest();
 	}
 
 	public void onTestFailure(ITestResult tr) {
-		reporter.reportStep(LogStatus.FAIL, "Finish test case [" + Thread.currentThread().getName() + "] with failure");
+		reporter.reportStep(LogStatus.FAIL, "Finish test [" + Thread.currentThread().getName() + "] with failure");
 		reporter.endTest();
 	}
 
 	public void onTestSuccess(ITestResult tr) {
-		reporter.reportStep(LogStatus.PASS, "Finish test case [" + Thread.currentThread().getName() + "] with success");
+		reporter.reportStep(LogStatus.PASS, "Finish test [" + Thread.currentThread().getName() + "] with success");
 		reporter.endTest();
 	}
 

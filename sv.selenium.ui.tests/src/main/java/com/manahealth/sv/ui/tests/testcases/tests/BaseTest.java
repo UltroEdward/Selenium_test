@@ -2,6 +2,8 @@ package com.manahealth.sv.ui.tests.testcases.tests;
 
 import java.lang.reflect.Method;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -19,8 +21,9 @@ import com.manahealth.sv.ui.tests.framework.report.ReportManager;
 public abstract class BaseTest {
 
 	protected AppContext appContext = null;
+	protected static final Logger log = LoggerFactory.getLogger(BaseTest.class);
 	private ReportManager reporter = ReportManager.getInstance();
-
+	
 	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
 		DriverFactory.quitWebDriver(DriverFactory.getDriver());
@@ -35,11 +38,11 @@ public abstract class BaseTest {
 
 	@Parameters({ "BASE_URL", "REPORT_PATH", "USERNAME_PROV", "PASSWORD_PROV", "USERNAME_REQ", "PASSWORD_REQ", "DRIVER" })
 	@BeforeClass
-	public void setUpContext(@Optional String baseUrl, @Optional String reportPath, @Optional String usernameProv,
-			@Optional String passwordProv, @Optional String usernameReq, @Optional String passwordReq,
-			@Optional String driver) {
+	public void setUpContext(@Optional String baseUrl, @Optional String reportPath, @Optional String usernameProv, @Optional String passwordProv,
+			@Optional String usernameReq, @Optional String passwordReq, @Optional String driver) {
+
 		appContext = AppContext.getInstance();
-		
+
 		appContext.setBaseUrl(baseUrl);
 		appContext.setReportPath(reportPath);
 		appContext.setDriver(DriverType.valueOf(driver));
@@ -47,7 +50,7 @@ public abstract class BaseTest {
 		appContext.setPasswordProv(passwordProv);
 		appContext.setUsernameReq(usernameReq);
 		appContext.setPasswordReq(passwordReq);
-		
+
 		reporter.init();
 	}
 

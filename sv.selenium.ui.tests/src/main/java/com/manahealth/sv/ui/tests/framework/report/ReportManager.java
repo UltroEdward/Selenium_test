@@ -12,9 +12,9 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class ReportManager {
 
-	private static ReportManager manager;
 	private ExtentReports report;
-	static Map<Integer, ExtentTest> reportPerThread = new HashMap<Integer, ExtentTest>();
+	private static ReportManager manager;
+	private static Map<Integer, ExtentTest> reportPerThread = new HashMap<Integer, ExtentTest>();
 
 	private ReportManager() {
 	}
@@ -54,8 +54,5 @@ public class ReportManager {
 	public void reportStep(LogStatus status, String eventName) {
 		this.getTest().log(status, eventName);
 	}
-
-
 	
-
 }

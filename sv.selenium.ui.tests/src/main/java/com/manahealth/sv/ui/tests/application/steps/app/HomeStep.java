@@ -1,9 +1,9 @@
-package com.manahealth.sv.ui.tests.framework.steps.app;
+package com.manahealth.sv.ui.tests.application.steps.app;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import com.manahealth.sv.ui.tests.framework.pages.app.HomePage;
+import com.manahealth.sv.ui.tests.application.pages.HomePage;
 import com.manahealth.sv.ui.tests.framework.steps.BaseStep;
 
 public class HomeStep extends BaseStep{
@@ -13,5 +13,7 @@ public class HomeStep extends BaseStep{
 	public HomeStep(WebDriver driver) {
 		super(driver);
 	}
+	
+	
 
 }
