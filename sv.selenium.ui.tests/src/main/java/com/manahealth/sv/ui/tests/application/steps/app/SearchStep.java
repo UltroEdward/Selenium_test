@@ -9,7 +9,7 @@ import com.manahealth.sv.ui.tests.framework.steps.BaseStep;
 
 public class SearchStep extends BaseStep {
 
-	public SearchPage searhPage = new SearchPage(driver);
+
 	
 	public SearchStep(WebDriver driver) {
 		super(driver);

@@ -13,9 +13,9 @@ public class LoginStep extends BaseStep {
 		super(driver);	
 	}
  
-	public HomeStep login(String username, String password) {
+	public PatientTabStep login(String username, String password) {
 		loginDefault(username, password);
-		return new HomeStep(driver);
+		return new PatientTabStep(driver);
 	}
 	
 	public String loginNegative(String username, String password) {
@@ -24,11 +24,11 @@ public class LoginStep extends BaseStep {
 		return alertMsg;
 	}
 	
-	public HomeStep loginAsProv() {
+	public PatientTabStep loginAsProv() {
 		return login(context.getUsernameProv(), context.getPasswordProv() );
 	}
 	
-	public HomeStep loginAsReq() {
+	public PatientTabStep loginAsReq() {
 		return login(context.getUsernameReq(), context.getPasswordReq() );
 	}
 	
