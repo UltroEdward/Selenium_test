@@ -8,7 +8,7 @@ import com.manahealth.sv.ui.tests.testcases.tests.BaseTest;
 
 public class SearchTest extends BaseTest {
 
-	@Test(description = "")
+	//@Test(description = "")
 	public void tst() {
 		new LoginStep(DriverFactory.getDriver()).loginAsReq();
 	}

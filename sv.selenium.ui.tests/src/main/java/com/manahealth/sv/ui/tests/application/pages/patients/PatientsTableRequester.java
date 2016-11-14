@@ -10,7 +10,7 @@ import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
 
 public class PatientsTableRequester extends AbstractPatientsTablePage {
 
-	@FindBy(xpath = "//table//*[contains(text(), 'Provider')]")
+	@FindBy(xpath = "//table//*[contains(text(), 'Source')]")
 	public ILabel providerLbl;
 	@FindBy(xpath = "//table//*[contains(text(), 'Submitted')]")
 	public ILabel submitedLbl;

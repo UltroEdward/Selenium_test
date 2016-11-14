@@ -13,8 +13,8 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class BasePage {
 
-	private static final int DEFAULT_WAIT_TIME = 45;
-	private WebDriver driver = null;
+	private static final int DEFAULT_WAIT_TIME = 75;
+	protected WebDriver driver = null;
 	private static final Logger log = LoggerFactory.getLogger(BasePage.class);
 	private ReportManager reporter = ReportManager.getInstance();
 

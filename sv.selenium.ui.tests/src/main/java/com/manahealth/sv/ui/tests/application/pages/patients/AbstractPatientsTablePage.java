@@ -1,6 +1,10 @@
 package com.manahealth.sv.ui.tests.application.pages.patients;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -45,11 +49,39 @@ public class AbstractPatientsTablePage extends BasePage{
 
 	@FindBy(xpath = "//table//*[contains(@class, 'Button')]")
 	public IButton actionBtn;
+	
+	//table rows
+	@FindBy(xpath = "//table//tbody//tr")
+	public List<ILabel> abstarctPatientLbl;
+	
+	//pagination
+	@FindBy(xpath = "//i[contains(@class, 'Paging')]")
+	public ILabel paginationLbl;
+	@FindBy(xpath = "//ul[contains(@class, 'Paging')]//li[contains(@class,'next')]/*")
+	public IButton paginationNextBtn;
 
+	
 	public AbstractPatientsTablePage(WebDriver driver) {
 		super(driver);
 		waitForPageToLoad(LOAD_INDICATOR);
 		PageFactory.initElements(new HtmlElementDecorator(driver), this);
 	}
+	
+	public enum TableItems{
+		NAME("1"), DOB("2"), SEX ("3"),SSN("4"), ADDRESS ("5"), CITY("6"), STATE("7"), ZIP("8"), SOURCE("9"), REQUESTER("9"), REQUESTED("10"), SUMBITTED("10"), ACTION("11");
+		
+		private String value;
+		
+		TableItems (String number){
+			this.value = number;
+		}
+		
+		public String getValue(){
+			return this.value;
+		}
+		
+	}
+	
+	
 	
 }

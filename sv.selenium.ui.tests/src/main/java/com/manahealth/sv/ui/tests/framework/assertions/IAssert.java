@@ -26,8 +26,8 @@ public class IAssert {
 			assertThat(condition).isEqualTo(true);
 			reporter.reportStep(LogStatus.PASS, String.format("Assert success: [%s] is [true]. Description: %s", condition, description));
 		} catch (AssertionError ex) {
-			reportFailture(ex);
-			throw new AssertionError(ex);
+			reportFailture(ex, description);
+			throw new AssertionError(ex + "\n Assertion failed: " + description);
 		}
 	}
 
@@ -41,10 +41,18 @@ public class IAssert {
 		}
 	}
 
-	private static void reportFailture(AssertionError ex) {
+	private static void reportFailture(AssertionError ex, String description) {
 		reporter.reportStep(LogStatus.ERROR, String.format(FAILED_TEMPLATE, ex.getMessage()));
+		if (description != null && !description.isEmpty()){
+			reporter.reportStep(LogStatus.ERROR, String.format("Assertion fails: %s ", description));
+		}
+		
 		DriverUtils.reportScreenShotFailture();
 		reporter.reportStep(LogStatus.ERROR, "StackTrace: <br>" + stackTraceToString(ex));
+	}
+	
+	private static void reportFailture(AssertionError ex) {
+		reportFailture(ex, null);
 	}
 
 	private static String stackTraceToString(Throwable e) {

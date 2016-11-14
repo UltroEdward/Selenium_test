@@ -13,7 +13,7 @@ public class PatientDto {
 	private String state;
 	private String zip;
 	
-	private String actionDoneDate;
+	//private String actionDoneDate;
 	private IButton actionBtn;
 
 	public String getName() {
