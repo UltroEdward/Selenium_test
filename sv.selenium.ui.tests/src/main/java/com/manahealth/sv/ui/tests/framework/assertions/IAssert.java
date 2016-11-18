@@ -34,14 +34,14 @@ public class IAssert {
 	public static void assertEquals(Object actual, Object expected) {
 		try {
 			assertThat(actual).isEqualTo(expected);
-			reporter.reportStep(LogStatus.PASS, String.format("Assert success: <br> [%s] equals to <br> [%s]", actual.toString(), expected.toString()));
+			reporter.reportStep(LogStatus.PASS, String.format("Assert success: <br> [%s] equals to [%s]", actual.toString(), expected.toString()));
 		} catch (AssertionError ex) {
 			reportFailture(ex);
 			throw new AssertionError(ex);
 		}
 	}
 
-	private static void reportFailture(AssertionError ex, String description) {
+	public static void reportFailture(Throwable ex, String description) {
 		reporter.reportStep(LogStatus.ERROR, String.format(FAILED_TEMPLATE, ex.getMessage()));
 		if (description != null && !description.isEmpty()){
 			reporter.reportStep(LogStatus.ERROR, String.format("Assertion fails: %s ", description));

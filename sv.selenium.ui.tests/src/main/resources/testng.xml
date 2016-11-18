@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All tests" parallel="methods" thread-count="1">
+<suite name="All tests" parallel="methods" thread-count="4">
 	<listeners>
 		<listener class-name="com.manahealth.sv.ui.tests.framework.report.ReportListener" />
 	</listeners>
@@ -11,10 +11,14 @@
 		<parameter name="PASSWORD_PROV" value="dummyPassword2" />
 		<parameter name="REPORT_PATH" value="D:\Report\" />
 		<parameter name="DRIVER" value="CHROME" />
-
-		 <classes> <class name="com.manahealth.sv.ui.tests.testcases.tests.app.PatientTabTest" 
-			/> </classes>
-			<!--
+		
+		
+		 <classes> 
+		 <class name="com.manahealth.sv.ui.tests.testcases.tests.app.PatientTabTest"/> 
+	
+		  </classes>
+	
+		 <!--
 		<packages>
 			<package name="com.manahealth.sv.ui.tests.testcases.tests.app" />
 		</packages>

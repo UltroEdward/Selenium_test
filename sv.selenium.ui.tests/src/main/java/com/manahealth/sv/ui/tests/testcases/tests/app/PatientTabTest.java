@@ -45,6 +45,7 @@ public class PatientTabTest extends BaseTest {
 		}
 	}
 	
+	@Test(description = "Check patients data in table for requester", dataProvider = "tabsToCheck")
 	public void checkTableDataForRequesterApp(RequestStatus status) {
 		new LoginStep(DriverFactory.getDriver()).loginAsReq();
 		PatientTabStep patentTab = new PatientTabStep(DriverFactory.getDriver());
@@ -57,7 +58,7 @@ public class PatientTabTest extends BaseTest {
 		}
 	}
 	
-	@Test(description = "Check pagination if possible for requester's tabs, by oipening last element and checking table", dataProvider = "tabsToCheck")
+	@Test(description = "Check pagination if possible for requester's tabs, by opening last element and checking table", dataProvider = "tabsToCheck")
 	public void checkPaginationReq(RequestStatus status) {
 		new LoginStep(DriverFactory.getDriver()).loginAsReq();
 		PatientTabStep patentTab = new PatientTabStep(DriverFactory.getDriver());
@@ -72,7 +73,7 @@ public class PatientTabTest extends BaseTest {
 		}
 	}
 	
-	@Test(description = "Check pagination if possible for provider's tabs, by oip[ening last element and checking table", dataProvider = "tabsToCheck")
+	@Test(description = "Check pagination if possible for provider's tabs, by opening last element and checking table", dataProvider = "tabsToCheck")
 	public void checkPaginationProv(RequestStatus status) {
 		new LoginStep(DriverFactory.getDriver()).loginAsProv();
 		PatientTabStep patentTab = new PatientTabStep(DriverFactory.getDriver());

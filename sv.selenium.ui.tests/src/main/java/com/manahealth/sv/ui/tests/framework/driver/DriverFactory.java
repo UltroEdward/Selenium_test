@@ -7,6 +7,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.gargoylesoftware.htmlunit.javascript.host.html.Option;
+
 public class DriverFactory {
 
 	private static final Logger log = LoggerFactory.getLogger(DriverFactory.class);
@@ -17,6 +19,9 @@ public class DriverFactory {
 
 	
 	public static WebDriver getDriver() {
+		if(driver.get() ==null){
+			System.out.println("AAAAAAAAAAAA");
+		};
 		return driver.get();
 	}
 
@@ -25,7 +30,9 @@ public class DriverFactory {
 	}
 
 	public static void quitWebDriver(WebDriver driver) {
+		
 		if (driver != null) {
+			driver.close();
 			driver.quit();
 		}
 		driver = null;

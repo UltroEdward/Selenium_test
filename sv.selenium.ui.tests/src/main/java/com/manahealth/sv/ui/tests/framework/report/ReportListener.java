@@ -6,18 +6,20 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.internal.IResultListener;
 
+import com.manahealth.sv.ui.tests.framework.assertions.IAssert;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class ReportListener implements IResultListener, IInvokedMethodListener {
 	private ReportManager reporter = ReportManager.getInstance();
 
 	public void onTestSkipped(ITestResult tr) {
-		reporter.reportStep(LogStatus.SKIP, "Skipped test [" + Thread.currentThread().getName() + "] : "+ tr.getName() + " " + tr.getThrowable().getMessage());
+		reporter.reportStep(LogStatus.SKIP, "Skipped test [" + Thread.currentThread().getName() + "] : "+ tr.getName() + " <br>" + tr.getThrowable().getMessage());
 		reporter.endTest();
 	}
 
 	public void onTestFailure(ITestResult tr) {
 		reporter.reportStep(LogStatus.FAIL, "Finish test [" + Thread.currentThread().getName() + "] with failure");
+		IAssert.reportFailture(tr.getThrowable(), "<b style='color: red !important;'> Test failed, last screenshot<b>");
 		reporter.endTest();
 	}
 

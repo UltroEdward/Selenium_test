@@ -33,6 +33,7 @@ public abstract class BaseTest {
 	public void beforeMethod(Method m, ITestContext context) {
 		DriverFactory.setDriver(appContext.getDriver());
 		DriverFactory.getDriver().get(appContext.getBaseUrl());
+		DriverFactory.getDriver().manage().window().maximize();
 		reporter.startTest(m.getName(), m.getAnnotation(Test.class).description());
 	}
 
