@@ -13,8 +13,8 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class BasePage {
 
-	private static final int DEFAULT_WAIT_TIME = 75;
 	protected WebDriver driver = null;
+	private static final int DEFAULT_WAIT_TIME = 75;
 	private static final Logger log = LoggerFactory.getLogger(BasePage.class);
 	private ReportManager reporter = ReportManager.getInstance();
 
@@ -24,16 +24,19 @@ public class BasePage {
 
 	protected void waitForPageToLoad(String xpathExpression) {
 		WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_TIME);
+
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathExpression)));
 			String infMsg = String.format("Page <ins><b>[%s]</b></ins>  is loaded", this.getClass().getSimpleName());
 			log.info(infMsg);
 			reporter.reportStep(LogStatus.INFO, infMsg);
+			
 		} catch (WebDriverException ex) {
+			
 			String errMsg = String.format("Page <ins><b>[%s]</b></ins> is NOT loaded correctly, can't find indicator: (%s). \nERROR: %s", this.getClass().getSimpleName(), xpathExpression, ex.getMessage());
 			log.error(errMsg);
 			reporter.reportStep(LogStatus.ERROR, errMsg);
-			throw new RuntimeException(ex);
+			throw new RuntimeException(errMsg);
 		}
 	}
 

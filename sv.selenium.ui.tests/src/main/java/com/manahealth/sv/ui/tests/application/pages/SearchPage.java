@@ -30,10 +30,8 @@ public class SearchPage extends BasePage {
 	public IInput cityInp;
 	@FindBy(xpath = "//input[@name='zip']")
 	public IInput zipInp;
-	
 	@FindBy(xpath = "//select[@name='sex']")
 	public ISelect sexSel;
-	
 	
 	@FindBy(xpath = "//*[contains(@class, 'icon-warning')]")
 	public ILabel warnMsg;

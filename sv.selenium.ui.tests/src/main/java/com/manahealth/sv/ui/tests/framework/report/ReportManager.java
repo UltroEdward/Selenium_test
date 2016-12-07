@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.manahealth.sv.ui.tests.framework.driver.AppContext;
 import com.manahealth.sv.ui.tests.framework.utils.DateUtils;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -26,19 +25,10 @@ public class ReportManager {
 		return manager;
 	}
 
-	public void init() {
+	public void initReport(String reportPath) {
 		if (report == null) {
-			report = new ExtentReports(AppContext.getInstance().getReportPath() + File.separator
-					+ String.format("Report_%s.html", DateUtils.getCurDate()));
+			report = new ExtentReports(reportPath + File.separator + String.format("Report_%s.html", DateUtils.getCurDate()));
 		}
-	}
-
-	private synchronized ExtentTest getTest() {
-		return reportPerThread.get(Integer.valueOf((int) Thread.currentThread().getId()));
-	}
-
-	public synchronized void endTest() {
-		report.endTest(reportPerThread.get(Integer.valueOf((int) Thread.currentThread().getId())));
 	}
 
 	public synchronized ExtentTest startTest(String testName, String description) {
@@ -47,12 +37,22 @@ public class ReportManager {
 		return test;
 	}
 
+	public void reportStep(LogStatus status, String eventName) {
+		if (eventName == null || eventName.isEmpty()) {
+			eventName = "No description";
+		}
+		this.getTest().log(status, eventName);
+	}
+
+	public synchronized void endTest() {
+		report.endTest(reportPerThread.get(Integer.valueOf((int) Thread.currentThread().getId())));
+	}
+
 	public void endReport() {
 		report.close();
 	}
 
-	public void reportStep(LogStatus status, String eventName) {
-		this.getTest().log(status, eventName);
+	private synchronized ExtentTest getTest() {
+		return reportPerThread.get(Integer.valueOf((int) Thread.currentThread().getId()));
 	}
-	
 }

@@ -16,15 +16,14 @@ public class IInput extends TextInput {
 	@Override
 	public void sendKeys(CharSequence... keys) {
 		super.sendKeys(keys);
-		ReportManager.getInstance().reportStep(LogStatus.INFO,
-				String.format("Sending text to [%s]: %s", getName(),keys[0] ));
+		ReportManager.getInstance().reportStep(LogStatus.INFO, String.format("Sending text to [%s]: %s", getName(), keys[0]));
 	}
 
 	@Override
 	public String getEnteredText() {
 		String actualText = super.getEnteredText();
-		ReportManager.getInstance().reportStep(LogStatus.INFO,
-				String.format("Getting text from [%s]: %s " + getName(), actualText));
+		ReportManager.getInstance().reportStep(LogStatus.INFO, String.format("Getting text from [%s]: %s " + getName(), actualText));
 		return actualText;
 	}
+
 }

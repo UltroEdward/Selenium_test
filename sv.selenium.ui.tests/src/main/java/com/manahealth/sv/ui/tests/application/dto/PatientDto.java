@@ -12,8 +12,8 @@ public class PatientDto {
 	private String city;
 	private String state;
 	private String zip;
-	
-	//private String actionDoneDate;
+
+	// private String actionDoneDate;
 	private IButton actionBtn;
 
 	public String getName() {
@@ -87,6 +87,5 @@ public class PatientDto {
 	public void setActionBtn(IButton actionBtn) {
 		this.actionBtn = actionBtn;
 	}
-	
-	
+
 }

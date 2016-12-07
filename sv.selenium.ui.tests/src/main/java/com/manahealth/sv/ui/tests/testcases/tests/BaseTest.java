@@ -52,7 +52,7 @@ public abstract class BaseTest {
 		appContext.setUsernameReq(usernameReq);
 		appContext.setPasswordReq(passwordReq);
 
-		reporter.init();
+		reporter.initReport(appContext.getReportPath());
 	}
 
 	@AfterSuite(alwaysRun = true)

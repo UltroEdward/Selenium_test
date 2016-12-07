@@ -5,6 +5,13 @@ import com.manahealth.sv.ui.tests.framework.utils.Config;
 public class AppContext {
 
 	private static AppContext appContext;
+	private String baseUrl = null;
+	private String reportPath = null;
+	private DriverType driver = null;
+	private String usernameProv = null;
+	private String passwordProv = null;
+	private String usernameReq = null;
+	private String passwordReq = null;
 
 	private AppContext() {
 	}
@@ -15,14 +22,6 @@ public class AppContext {
 		}
 		return appContext;
 	}
-
-	private String baseUrl = null;
-	private String reportPath = null;
-	private DriverType driver = null;
-	private String usernameProv = null;
-	private String passwordProv = null;
-	private String usernameReq = null;
-	private String passwordReq = null;
 
 	public String getBaseUrl() {
 		if (baseUrl == null) {

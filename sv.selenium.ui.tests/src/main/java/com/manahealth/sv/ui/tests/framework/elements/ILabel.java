@@ -7,9 +7,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 import ru.yandex.qatools.htmlelements.element.TypifiedElement;
 
-
-
-public class ILabel extends TypifiedElement{
+public class ILabel extends TypifiedElement {
 
 	public ILabel(WebElement wrappedElement) {
 		super(wrappedElement);
@@ -20,5 +18,5 @@ public class ILabel extends TypifiedElement{
 		ReportManager.getInstance().reportStep(LogStatus.INFO, String.format("Getting text from [%s]: %s ", getName(), actualText));
 		return actualText;
 	}
-		
+
 }

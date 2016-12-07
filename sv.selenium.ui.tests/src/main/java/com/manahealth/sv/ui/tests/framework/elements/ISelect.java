@@ -18,7 +18,7 @@ public class ISelect extends TypifiedElement {
 	}
 
 	public String getValue() {
-		String value =  getWrappedElement().findElement(By.xpath(".//parent::*//input[@type='text']")).getAttribute("value");
+		String value = getWrappedElement().findElement(By.xpath(".//parent::*//input[@type='text']")).getAttribute("value");
 		ReportManager.getInstance().reportStep(LogStatus.INFO, String.format("Getting value from [%s]: %s ", getName(), value));
 		return value;
 	}
@@ -26,28 +26,26 @@ public class ISelect extends TypifiedElement {
 	public void setValue(String value) {
 		getWrappedElement().findElement(By.xpath(".//parent::*//input[@type='text']")).click();
 		List<WebElement> options = getWrappedElement().findElements(By.xpath("//span[contains(@value,.)]"));
-		for (WebElement el : options){
-			if (el.getAttribute("value").equalsIgnoreCase(value)){
+		for (WebElement el : options) {
+			if (el.getAttribute("value").equalsIgnoreCase(value)) {
 				el.click();
 				ReportManager.getInstance().reportStep(LogStatus.INFO, String.format("Setting value to [%s]: %s ", getName(), value));
 				return;
 			}
 		}
 		ReportManager.getInstance().reportStep(LogStatus.ERROR, String.format("Can't set to [%s]:  value %s ", getName(), value));
-		
 	}
 
 	public List<String> getOptions() {
 		List<WebElement> options = getWrappedElement().findElements(By.xpath(".//option"));
 		List<String> result = new ArrayList<String>();
-		for(WebElement el: options ){
+		for (WebElement el : options) {
 			String value = el.getAttribute("value");
-			if(value !=null && !value.isEmpty()){
+			if (value != null && !value.isEmpty()) {
 				result.add(value);
 			}
 		}
 		return result;
 	}
-	
-	
+
 }

@@ -5,10 +5,17 @@ import java.util.Calendar;
 
 public class DateUtils {
 
-	public static String getCurDate() {
+	private static final String DEFAUL_DATE_FORMAT = "dd-MM-yyyy_HH-mm-ss";
+
+	public static String getCurDate(String dateFormat) {
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat format = new SimpleDateFormat();
-		format.applyPattern("dd-MM-yyyy_HH-mm-ss");
+		format.applyPattern(dateFormat);
 		return format.format(cal.getTime());
 	}
+
+	public static String getCurDate() {
+		return getCurDate(DEFAUL_DATE_FORMAT);
+	}
+
 }

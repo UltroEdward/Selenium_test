@@ -5,19 +5,19 @@ import java.util.regex.Pattern;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import com.manahealth.sv.ui.tests.application.dto.PatientDto;
 import com.manahealth.sv.ui.tests.application.dto.PatientProviderDto;
 import com.manahealth.sv.ui.tests.application.dto.PatientRequesterDto;
 import com.manahealth.sv.ui.tests.application.helpers.RequestStatus;
 import com.manahealth.sv.ui.tests.application.pages.patients.AbstractPatientsTablePage;
+import com.manahealth.sv.ui.tests.application.pages.patients.AbstractPatientsTablePage.TableItems;
 import com.manahealth.sv.ui.tests.application.pages.patients.PatientTabProvider;
 import com.manahealth.sv.ui.tests.application.pages.patients.PatientsTableRequester;
-import com.manahealth.sv.ui.tests.application.pages.patients.AbstractPatientsTablePage.TableItems;
 import com.manahealth.sv.ui.tests.framework.assertions.IAssert;
 import com.manahealth.sv.ui.tests.framework.elements.ILabel;
 import com.manahealth.sv.ui.tests.framework.steps.BaseStep;
+import com.manahealth.sv.ui.tests.framework.utils.AssertUtils;
 
 public class PatientTabStep extends BaseStep {
 
@@ -44,7 +44,12 @@ public class PatientTabStep extends BaseStep {
 		}
 	}
 
+	public int getVisibleCountOfPatinets() {
+		return page.abstarctPatientLbl.size();
+	}
+
 	public void checkReqTableHeader(RequestStatus status) {
+
 		PatientsTableRequester baseTablePage = new PatientsTableRequester(driver);
 		IAssert.assertEquals(baseTablePage.providerLbl.getText(), "Source");
 		IAssert.assertEquals(baseTablePage.submitedLbl.getText(), "Submitted");
@@ -63,6 +68,7 @@ public class PatientTabStep extends BaseStep {
 	}
 
 	public void checkProvTableHeader(RequestStatus status) {
+
 		PatientTabProvider baseTablePage = new PatientTabProvider(driver);
 		checkBaseHeader(new PatientsTableRequester(driver));
 		IAssert.assertEquals(baseTablePage.requesterLbl.getText(), "Requester");
@@ -81,20 +87,21 @@ public class PatientTabStep extends BaseStep {
 	}
 
 	public void isReqPatientTableDataValid(int patientNumber, RequestStatus tab) {
+
 		PatientRequesterDto dto = getRequeserPatientData(patientNumber, tab);
 		isBasePatientDataValid(dto);
-		regExpMatches(dto.getSubmitted(), "[0-9]{2}-[0-9]{2}-[0-9]{4}");
+		AssertUtils.regExpMatchesValidator(dto.getSubmitted(), "[0-9]{2}-[0-9]{2}-[0-9]{4}");
 		if (!tab.equals(RequestStatus.PENDING)) {
-			regExpMatches(dto.getActionDate(), "[0-9]{2}-[0-9]{2}-[0-9]{4}");
+			AssertUtils.regExpMatchesValidator(dto.getActionDate(), "[0-9]{2}-[0-9]{2}-[0-9]{4}");
 		}
 	}
-	
+
 	public void isProvPatientTableDataValid(int patientNumber, RequestStatus tab) {
 		PatientProviderDto dto = getProviderPatientData(patientNumber, tab);
 		isBasePatientDataValid(dto);
-		regExpMatches(dto.getRequested(), "[0-9]{2}-[0-9]{2}-[0-9]{4}");
+		AssertUtils.regExpMatchesValidator(dto.getRequested(), "[0-9]{2}-[0-9]{2}-[0-9]{4}");
 		if (!tab.equals(RequestStatus.PENDING)) {
-			regExpMatches(dto.getActionDate(), "[0-9]{2}-[0-9]{2}-[0-9]{4}");
+			AssertUtils.regExpMatchesValidator(dto.getActionDate(), "[0-9]{2}-[0-9]{2}-[0-9]{4}");
 		}
 	}
 
@@ -125,34 +132,24 @@ public class PatientTabStep extends BaseStep {
 		}
 		return patient;
 	}
-	
-	public int getPatientCountFromPadding(){
+
+	public int getPatientCountFromPadding() {
 		String label = page.paginationLbl.getText();
 		System.out.println(label);
 		Pattern p = Pattern.compile("\\([0-9]+");
 		Matcher m = p.matcher(label);
-		if(m.find()){
+		if (m.find()) {
 			String find = m.group(0);
 			return Integer.parseInt(find.substring(1));
 		}
-		//TODO: check without pagination
+		// TODO: check without pagination
 		return -1;
 	}
-	
-	public static void main(String []args){
-		String dinf = "Page 1 of 4 (31 items) (32";
-		Pattern p = Pattern.compile("\\([0-9]+");
-		Matcher m = p.matcher(dinf);
-		if(m.find()){
-			String find = m.group(0);
-			System.out.println(find);
-		}
-	}
-	
-	public void moveByPaddingNext(){
+
+	public void moveByPaddingNext() {
 		page.paginationNextBtn.click();
 	}
-	
+
 	private PatientDto getBasicPatientData(PatientDto patient, int patientNumber) {
 		ILabel absPatient = page.abstarctPatientLbl.get(patientNumber - 1);
 		patient.setName(getCellValue(absPatient, TableItems.NAME));
@@ -166,23 +163,14 @@ public class PatientTabStep extends BaseStep {
 		return patient;
 	}
 
+	// TODO: check, rules for data
 	private void isBasePatientDataValid(PatientDto patient) {
-		regExpMatches(patient.getName(), "([A-z]|[0-9])+, ([A-z]|[0-9])+");
-		regExpMatches(patient.getDob(), "[0-9]{2}-[0-9]{2}-[0-9]{4}");
-		regExpMatches(patient.getSex(), "[M|F]");
-		regExpMatches(patient.getSsn(), "\\*[0-9]{4}");
-	}
-
-	private void regExpMatches(String stringToSearch, String regExp) {
-		if (!stringToSearch.contains(EMPTY_VALUE)) {
-			Pattern p = Pattern.compile(regExp);
-			Matcher m = p.matcher(stringToSearch);
-			IAssert.assertTrue(m.matches(), String.format("Patient data [%s] meets regexp [%s]", stringToSearch, regExp));
-		}
-	}
-
-	private String getCellValue(ILabel patientRowItem, TableItems headerName) {
-		return patientRowItem.getWrappedElement().findElements(By.xpath(".//td")).get(Integer.parseInt(headerName.getValue())).getText();
+		// AssertUtils.regExpMatches(patient.getName(), "([A-z]|[0-9])+,
+		// ([A-z]|[0-9])+");
+		// AssertUtils.regExpMatches(patient.getDob(),
+		// "[0-9]{2}-[0-9]{2}-[0-9]{4}");
+		AssertUtils.regExpMatchesValidator(patient.getSex(), "[M|F]");
+		// AssertUtils.regExpMatchesValidator(patient.getSsn(), "\\*[0-9]{4}");
 	}
 
 	private void checkBaseHeader(AbstractPatientsTablePage baseTablePage) {
@@ -194,6 +182,10 @@ public class PatientTabStep extends BaseStep {
 		IAssert.assertEquals(baseTablePage.cityLbl.getText(), "City");
 		IAssert.assertEquals(baseTablePage.stateLbl.getText(), "State");
 		IAssert.assertEquals(baseTablePage.zipLbl.getText(), "Zip");
+	}
+
+	private String getCellValue(ILabel patientRowItem, TableItems headerName) {
+		return patientRowItem.getWrappedElement().findElements(By.xpath(".//td")).get(Integer.parseInt(headerName.getValue())).getText();
 	}
 
 }

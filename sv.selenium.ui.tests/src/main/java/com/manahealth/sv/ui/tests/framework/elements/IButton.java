@@ -12,7 +12,7 @@ public class IButton extends Button {
 	public IButton(WebElement wrappedElement) {
 		super(wrappedElement);
 	}
-	
+
 	@Override
 	public void click() {
 		super.click();
