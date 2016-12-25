@@ -4,7 +4,8 @@ import com.manahealth.sv.ui.tests.framework.elements.IButton;
 
 public class PatientDto {
 
-	private String name;
+	private String fName;
+	private String lName;
 	private String dob;
 	private String sex;
 	private String ssn;
@@ -13,15 +14,22 @@ public class PatientDto {
 	private String state;
 	private String zip;
 
-	// private String actionDoneDate;
 	private IButton actionBtn;
 
-	public String getName() {
-		return name;
+	public String getfName() {
+		return fName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setfName(String fName) {
+		this.fName = fName;
+	}
+
+	public String getlName() {
+		return lName;
+	}
+
+	public void setlName(String lName) {
+		this.lName = lName;
 	}
 
 	public String getDob() {

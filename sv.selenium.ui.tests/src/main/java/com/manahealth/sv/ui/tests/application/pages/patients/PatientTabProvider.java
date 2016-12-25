@@ -8,7 +8,7 @@ import com.manahealth.sv.ui.tests.framework.elements.ILabel;
 
 import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
 
-public class PatientTabProvider extends AbstractPatientsTablePage {
+public class PatientTabProvider extends BasePatientsTablePage {
 
 	@FindBy(xpath = "//table//th[contains(text(), 'Requester')]")
 	public ILabel requesterLbl;	

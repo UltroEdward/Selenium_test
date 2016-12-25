@@ -29,7 +29,7 @@ public class LoginTest extends BaseTest {
 		loginStep.login(username, password);
 	}
 
-	@Test(description = "User again see log-in page after refreshing logi-in page with no authorization data")
+	@Test(description = "User again see log-in page after re-freshing logi-in page with no authorization data")
 	public void loginPageAvailableAfterRefresh() {
 		new LoginStep(DriverFactory.getDriver());
 		DriverFactory.getDriver().navigate().refresh();

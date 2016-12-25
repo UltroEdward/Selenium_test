@@ -11,80 +11,58 @@ import com.manahealth.sv.ui.tests.testcases.tests.BaseTest;
 
 public class PatientTabTest extends BaseTest {
 
+	public static final RequestStatus[] statuses = { RequestStatus.APPROVED, RequestStatus.DENIED, RequestStatus.PENDING };
+
 	@DataProvider
-	public Object[][] tabsToCheck() {
-		return new RequestStatus[][] { { RequestStatus.APPROVED }, { RequestStatus.DENIED }, { RequestStatus.PENDING } };
+	public String[][] credentials() {
+		return new String[][] { { appContext.getUsernameReq(), appContext.getPasswordReq() }, { appContext.getUsernameProv(), appContext.getPasswordProv() } };
 	}
 
-	@Test(description = "Check patients table HEADER for requester", dataProvider = "tabsToCheck")
-	public void checkHeaderReqApp(RequestStatus status) {
-		new LoginStep(DriverFactory.getDriver()).loginAsReq();
-		PatientTabStep patentTab = new PatientTabStep(DriverFactory.getDriver());
-		patentTab.openTab(status);
-		patentTab.checkReqTableHeader(status);
-	}
+	@Test(description = "Check that requester see patients basic table header", dataProvider = "credentials")
+	public void checkHeader(String userName, String password) {
+		new LoginStep(DriverFactory.getDriver()).login(userName, password);
 
-	@Test(description = "Check patients table HEADER for provider", dataProvider = "tabsToCheck")
-	public void checkHeaderProvApp(RequestStatus status) {
-		new LoginStep(DriverFactory.getDriver()).loginAsProv();
 		PatientTabStep patentTab = new PatientTabStep(DriverFactory.getDriver());
-		patentTab.openTab(status);
-		patentTab.checkProvTableHeader(status);
-	}
-
-	@Test(description = "Check patients data in table for provider", dataProvider = "tabsToCheck")
-	public void checkTableDataForProviderApp(RequestStatus status) {
-		new LoginStep(DriverFactory.getDriver()).loginAsProv();
-		PatientTabStep patentTab = new PatientTabStep(DriverFactory.getDriver());
-		patentTab.openTab(status);
-
-		int patientsTocheck = patentTab.getPatientsCount();
-		while (patientsTocheck > 0) {
-			patentTab.isProvPatientTableDataValid(patientsTocheck, status);
-			patientsTocheck--;
+		for (RequestStatus tab : statuses) {
+			patentTab.openTab(tab);
+			new PatientTabStep(DriverFactory.getDriver()).checkBaseHeader(tab);
 		}
+
 	}
 
-	@Test(description = "Check patients data in table for requester", dataProvider = "tabsToCheck")
-	public void checkTableDataForRequesterApp(RequestStatus status) {
-		new LoginStep(DriverFactory.getDriver()).loginAsReq();
-		PatientTabStep patentTab = new PatientTabStep(DriverFactory.getDriver());
-		patentTab.openTab(status);
+	@Test(description = "Check basic patients data in table for requester", dataProvider = "credentials")
+	public void checkTableData(String userName, String password) {
+		new LoginStep(DriverFactory.getDriver()).login(userName, password);
 
-		int patientsTocheck = patentTab.getPatientsCount();
-		while (patientsTocheck > 0) {
-			patentTab.isReqPatientTableDataValid(patientsTocheck, status);
-			patientsTocheck--;
+		PatientTabStep patentTab = new PatientTabStep(DriverFactory.getDriver());
+		for (RequestStatus tab : statuses) {
+			patentTab.openTab(tab);
+			loopAncCheckVisiblePatients();
 		}
+
 	}
 
-	@Test(description = "Check pagination if possible for requester's tabs, by opening last element and checking table", dataProvider = "tabsToCheck")
-	public void checkPaginationReq(RequestStatus status) {
-		new LoginStep(DriverFactory.getDriver()).loginAsReq();
+	@Test(description = "Check pagination if possible for requester's tabs, by opening last element and checking table", dataProvider = "credentials")
+	public void checkPaginationReq(String userName, String password) {
+		new LoginStep(DriverFactory.getDriver()).login(userName, password);
+
 		PatientTabStep patentTab = new PatientTabStep(DriverFactory.getDriver());
-		patentTab.openTab(status);
-		if (patentTab.getVisibleCountOfPatinets() == 10 && patentTab.getPatientCountFromPadding() > 10) {
-			patentTab.moveByPaddingNext();
-			int patientsTocheck = patentTab.getPatientsCount();
-			while (patientsTocheck > 0) {
-				patentTab.isReqPatientTableDataValid(patientsTocheck, status);
-				patientsTocheck--;
+		for (RequestStatus tab : statuses) {
+			patentTab.openTab(tab);
+			if (patentTab.getVisibleCountOfPatinets() == 10 && patentTab.getPatientCountFromPadding() > 10) {
+				patentTab.moveByPaddingNext();
+				loopAncCheckVisiblePatients();
 			}
 		}
+
 	}
 
-	@Test(description = "Check pagination if possible for provider's tabs, by opening last element and checking table", dataProvider = "tabsToCheck")
-	public void checkPaginationProv(RequestStatus status) {
-		new LoginStep(DriverFactory.getDriver()).loginAsProv();
+	private void loopAncCheckVisiblePatients() {
 		PatientTabStep patentTab = new PatientTabStep(DriverFactory.getDriver());
-		patentTab.openTab(status);
-		if (patentTab.getVisibleCountOfPatinets() == 10 && patentTab.getPatientCountFromPadding() > 10) {
-			patentTab.moveByPaddingNext();
-			int patientsTocheck = patentTab.getPatientsCount();
-			while (patientsTocheck > 0) {
-				patentTab.isReqPatientTableDataValid(patientsTocheck, status);
-				patientsTocheck--;
-			}
+		int patientsTocheck = patentTab.getVisibleCountOfPatinets();
+		while (patientsTocheck > 0) {
+			patentTab.checkBasePatientRecord(patientsTocheck);
+			patientsTocheck--;
 		}
 	}
 

@@ -9,16 +9,18 @@ import com.manahealth.sv.ui.tests.framework.pages.BasePage;
 
 import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
 
-public class AbstarctLeftAppMenuPage extends BasePage {
+public class LeftMenuApps extends BasePage {
 
 	private static final String LOAD_INDICATOR = "//nav/*[contains(@class, 'requests')]";
 	
-	@FindBy(xpath = "//nav/*[contains(@class, 'requests')]")
-	public IButton goToRequestsBtn;
 	@FindBy(xpath = "//a[contains(@class, 'logo')]")
 	public IButton goToHomeLogoBtn;
+	@FindBy(xpath = "//nav/*[contains(@class, 'requests')]")
+	public IButton goToRequestsBtn;
+	@FindBy(xpath = "//nav/*[contains(@class, 'search')]")
+	public IButton goToSearchBtn;
 
-	public AbstarctLeftAppMenuPage(WebDriver driver) {
+	public LeftMenuApps(WebDriver driver) {
 		super(driver);
 		waitForPageToLoad(LOAD_INDICATOR);
 		PageFactory.initElements(new HtmlElementDecorator(driver), this);

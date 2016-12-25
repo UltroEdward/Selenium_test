@@ -10,6 +10,6 @@ public class SearchTest extends BaseTest {
 
 	//@Test(description = "")
 	public void tst() {
-		new LoginStep(DriverFactory.getDriver()).loginAsReq();
+		
 	}
 }

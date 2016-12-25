@@ -13,8 +13,8 @@ public class LoginStep extends BaseStep {
 		super(driver);	
 	}
  
-	public PatientTabStep login(String username, String password) {
-		loginDefault(username, password);
+	public PatientTabStep login(String userName, String password) {
+		loginDefault(userName, password);
 		return new PatientTabStep(driver);
 	}
 	
@@ -31,7 +31,7 @@ public class LoginStep extends BaseStep {
 	public PatientTabStep loginAsReq() {
 		return login(context.getUsernameReq(), context.getPasswordReq() );
 	}
-	
+		
 	private void loginDefault(String username, String password) {
 		loginPage.userNameInp.sendKeys(username);
 		loginPage.passwordInp.sendKeys(password);

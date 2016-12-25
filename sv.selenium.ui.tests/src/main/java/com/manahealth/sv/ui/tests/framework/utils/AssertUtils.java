@@ -22,7 +22,10 @@ public class AssertUtils {
 
 	private static final Logger log = LoggerFactory.getLogger(AssertUtils.class);
 
-	public static void regExpMatchesValidator(String stringToSearch, String regExp) {
+	public static void regExpMatches(String stringToSearch, String regExp, String ignoreSymbol) {
+		if(stringToSearch.equals(ignoreSymbol)){
+			return;
+		}
 		Pattern p = Pattern.compile(regExp);
 		Matcher m = p.matcher(stringToSearch);
 		IAssert.assertTrue(m.matches(), String.format("Data [%s] meets regexp [%s]", stringToSearch, regExp));
